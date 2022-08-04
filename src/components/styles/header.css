@@ -1,0 +1,22 @@
+header {
+    flex: 0 1 auto;
+    height: 80px;
+    background-color: #FFFFFF;
+}
+
+img {
+    margin-left: 5em;
+    height: 80px;
+}
+
+.heading {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    margin-top: 1em;
+    color: #1B31A8;
+    text-align: center;
+    display: block;
+}
