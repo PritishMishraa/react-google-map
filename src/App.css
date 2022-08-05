@@ -1,3 +1,4 @@
+/* Body */
 .App {
     background: #F4F8FA;
     display: flex;
@@ -5,20 +6,28 @@
     height: 100vh;
 }
 
-.main {
+/* Global placeholder style */
+::placeholder {
+    color: #999999;
+}
+
+/* Main area */
+main {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
 }
 
-.input-area {
+/* Left side of view */
+.input-side {
     width: 50%;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
 }
 
-.box {
+/* Input container */
+.container {
     height: 70%;
     width: 70%;
     display: flex;
@@ -27,11 +36,12 @@
     margin-right: 5%;
 }
 
-.h {
+.row-height {
     flex-grow: 1;
 }
 
-.origin {
+/* Input box */
+.input-wrapper {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -40,15 +50,18 @@
     justify-content: center;
 }
 
+/* Input title */
 .label {
     font-family: 'Work Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 2px;
+    margin-left: 12px;
 }
 
-.originInput {
+/* Input */
+.input {
     height: 35px;
     width: 100%;
     border: none;
@@ -63,11 +76,12 @@
     border-radius: 8px;
 }
 
-.originInput:focus {
+.input:focus {
     outline: none;
 }
 
-.btn-wrapper {
+/* Button wrapper */
+.button-wrapper {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -76,6 +90,7 @@
     justify-content: center;
 }
 
+/* Button */
 .button {
     border-radius: 32px;
     border: none;
@@ -93,15 +108,16 @@
 
 .button:hover,
 .button:focus {
-    background-color: #16437E;
+    background-color: #334ede;
     color: #ffffff;
 }
 
 .button:active {
-    background: #09223b;
+    background: #334ede;
     color: rgb(255, 255, 255, .7);
 }
 
+/* Distance box */
 .distance-box {
     background-color: #ffffff;
     margin-top: 20px;
@@ -110,9 +126,11 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid #E9EEF2;
+    border-radius: 8px;
 }
 
-.distance {
+.distance-text {
     padding-left: 10px;
     font-family: 'Work Sans';
     font-style: normal;
@@ -121,7 +139,7 @@
     line-height: 120%;
 }
 
-.distance-no {
+.distance-value {
     padding-right: 10px;
     font-family: 'Rubik';
     font-style: normal;
@@ -131,7 +149,8 @@
     color: #0079FF;
 }
 
-.result {
+/* Result box */
+.result-box {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -140,7 +159,7 @@
     justify-content: center;
 }
 
-.res {
+.result {
     font-family: 'Work Sans';
     font-style: normal;
     font-weight: 400;
@@ -149,7 +168,8 @@
     padding-left: 10px;
 }
 
-.right {
+/* Right side of view */
+.map-side {
     width: 50%;
     display: flex;
     align-items: center;
