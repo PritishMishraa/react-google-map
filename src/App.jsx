@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './components/Header';
+import Loading from './components/Loading';
 
 import { useJsApiLoader, GoogleMap, Autocomplete, DirectionsRenderer } from '@react-google-maps/api'
 import { useRef, useState } from 'react';
@@ -10,7 +11,9 @@ function App() {
   const [directionResponse, setDirectionResponse] = useState(null)
   const [distance, setDistance] = useState('')
   const [originLoc, setOriginLoc] = useState('Mumbai')
-  const [destinationLoc, setDestinationLoc] = useState('Nodia')
+  const [destinationLoc, setDestinationLoc] = useState('Delhi')
+  const [hidden, setHidden] = useState(true)
+
 
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef()
@@ -23,7 +26,7 @@ function App() {
   })
 
   if (!isLoaded) {
-    return <h1>Loading</h1>
+    return <Loading />
   }
 
   async function calculateRoute() {
@@ -42,39 +45,40 @@ function App() {
     setDistance(results.routes[0].legs[0].distance.text)
     setOriginLoc(originRef.current.value)
     setDestinationLoc(destinationRef.current.value)
+    setHidden(false)
   }
 
   return (
     <div className="App">
       <Header />
-      <div className='main'>
-        <div className="input-area">
-          <div className="box">
-            <div className="origin h">
+      <main>
+        <div className="input-side">
+          <div className="container">
+            <div className="input-wrapper row-height">
               <span className='label'>Origin</span>
               <Autocomplete>
-                <input className='originInput' type="text" placeholder='Mumbai' ref={originRef} />
+                <input className='input' type="text" placeholder='Mumbai' ref={originRef} />
               </Autocomplete>
             </div>
-            <div className="btn-wrapper h">
+            <div className="button-wrapper row-height">
               <button className='button' onClick={calculateRoute}>Calculate</button>
             </div>
-            <div className="origin h">
+            <div className="input-wrapper row-height">
               <span className='label'>Destination</span>
               <Autocomplete>
-                <input className='originInput' type="text" placeholder='Delhi' ref={destinationRef} />
+                <input className='input' type="text" placeholder='Delhi' ref={destinationRef} />
               </Autocomplete>
             </div>
-            <div className="distance-box h">
-              <span className='distance'>Distance</span>
-              <span className='distance-no'>{distance}</span>
+            <div className="distance-box row-height">
+              <span className='distance-text'>Distance</span>
+              <span className='distance-value'>{distance}</span>
             </div>
-            <div className="result h">
-              <span className="res">The distance between <b>{originLoc}</b> and <b>{destinationLoc}</b> is <b>{distance} kms</b>.</span>
+            <div className="result-box row-height">
+              <span hidden={hidden} className="result">The distance between <b>{originLoc}</b> and <b>{destinationLoc}</b> is <b>{distance}</b>.</span>
             </div>
           </div>
         </div>
-        <div className="right">
+        <div className="map-side">
           <div className="google-map-view">
             {/* Google map box */}
             <GoogleMap center={center} zoom={5} mapContainerStyle={{ width: '100%', height: '100%' }}
@@ -90,7 +94,7 @@ function App() {
             </GoogleMap>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
